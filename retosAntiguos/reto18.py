@@ -16,3 +16,27 @@
  * Para ello tiene que realizar la opción correcta en cada tramo de la pista.
  */
 """
+def goal(actions:[],obstacle:str):
+    result=""
+    for act,pista in zip(actions, obstacle):
+        if act=="run" and pista=="_" or act=="jump" and pista=="|":
+            result+=pista
+        elif act=="jump" and pista=="_":
+            result+="x"
+        elif act=="run" and pista=="|":
+            result+="/"
+    print(result)
+    return obstacle==result
+
+actions1=["run","run","jump","run","jump"]
+pista1="__|_|"
+actions2=["jump","run","jump","jump","jump"]
+pista2="|_|||"
+
+print(goal(actions1,pista1))
+print(goal(actions2,pista2))
+print(goal(actions1,pista2))
+print(goal(actions2,pista1))
+
+
+
